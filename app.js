@@ -1,7 +1,33 @@
 const express = require('express')
 const app = express()
+
+//use swig as templating engine, use to render html files
+const swig = require('swig');
+app.engine('html', swig.renderFile);
+
+/* Tell swig where to look for templates when one extends another. */
+app.set('view engine', 'html');
+app.set('views', __dirname + '/views');
+app.use('/static', express.static('./static/'));
+
+//change port to 80 when in AWS EC2
 const port = 3000
 
-app.get('/', (req, res) => res.send('Hello World!'))
+//app.METHOD(PATH, HANDLER)
+// app is an instance of express.
+// METHOD is an HTTP request method, in lowercase.
+// PATH is a path on the server.
+// HANDLER is the function executed when the route is matched.
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+//match root route
+app.get('/', (req, res) => {
+    res.render('home');
+})
+
+app.get('*', (req, res) => {
+    res.render('notFound');
+  });
+
+app.listen(port, () => {
+    console.log(`Example app listening on port ${port}!`);
+})
