@@ -11,7 +11,7 @@ app.set('views', __dirname + '/views');
 app.use('/static', express.static('./static/'));
 
 //change port to 80 when in AWS EC2
-const port = 3000
+const port = 80
 
 //app.METHOD(PATH, HANDLER)
 // app is an instance of express.
