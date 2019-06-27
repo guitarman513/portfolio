@@ -12,7 +12,7 @@ app.use('/static', express.static('./static/'));
 
 //change port to 80 when in AWS EC2
 const port = 80
-
+ 
 //app.METHOD(PATH, HANDLER)
 // app is an instance of express.
 // METHOD is an HTTP request method, in lowercase.
@@ -23,6 +23,15 @@ const port = 80
 app.get('/', (req, res) => {
     res.render('home');
 })
+
+
+app.get('/school', (req, res) => {
+    res.render('school');
+});
+
+app.get('/projects', (req, res) => {
+    res.render('projects');
+});
 
 app.get('*', (req, res) => {
     res.render('notFound');
