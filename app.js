@@ -25,8 +25,8 @@ app.get('/', (req, res) => {
 })
 
 
-app.get('/school', (req, res) => {
-    res.render('school');
+app.get('/youtube', (req, res) => {
+    res.render('youtube');
 });
 
 app.get('/projects', (req, res) => {
